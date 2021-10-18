@@ -1,13 +1,53 @@
-@charset "UTF-8";
-@import url(jquery.mCustomScrollbar.css);
-@-ms-viewport{width:device-width}
-html{font-size:50px;-webkit-tap-highlight-color:transparent;height:100%;min-width:320px;overflow-x:hidden}
-body{font-family:"Microsoft YaHei";font-size:.28em;line-height:1;color:#333;background-color:white;}
+.grid-container {
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 10% 80% 10%;
+  gap: 1px 1px;
+  grid-template-areas:
+    "LU Header RU"
+    "LeftSide Body RightSide"
+    "LB Footer RB";
+  height: 1500px;
+}
 
-.rt_wrap{margin-left:218px;margin-right:10px;height:100%;position:relative;}
-.rt_content{margin-bottom:80px;margin-left:150px;overflow:hidden;}
-.pop_bg{display:none;background:rgba(0,0,0,.35);width:100%;height:100%;position:fixed;top:0;left:0;z-index:999;}
-.pop_cont{background:white;min-width:800px;height:auto;overflow:hidden;position:absolute;top:20%;left:30%;border-radius:5px 5px 0 0;}
-.pop_cont h3{height:40px;line-height:40px;background:#19a97b;color:white;font-size:14px;font-weight:bold;margin:0;padding:0 1em;}
-.pop_cont .btm_btn{padding:10px 0;text-align:center;}
-.pop_cont .btm_btn .trueBtn{background:#19a97b;color:white;border:1px #19a97b solid;border-radius:2px;width: 100px; height: 30px;font-size: 15px;}
+.Header { grid-area: Header; }
+
+.Body {
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 5% 40% 5% 20% 30%;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". SearchArea ."
+    ". TableArea ."
+    ". PageSelectorArea ."
+    ". WordCloudArea ."
+    ". VisualizationArea .";
+  grid-area: Body;
+}
+
+
+.SearchArea { grid-area: SearchArea; }
+
+.TableArea { grid-area: TableArea; }
+
+.PageSelectorArea { grid-area: PageSelectorArea; }
+
+.WordCloudArea { grid-area: WordCloudArea; }
+
+.VisualizationArea { grid-area: VisualizationArea; }
+
+.Footer { grid-area: Footer; }
+
+.LeftSide { grid-area: LeftSide; }
+
+.RightSide { grid-area: RightSide; }
+
+.LU { grid-area: LU; }
+
+.RU { grid-area: RU; }
+
+.LB { grid-area: LB; }
+
+.RB { grid-area: RB; }
+

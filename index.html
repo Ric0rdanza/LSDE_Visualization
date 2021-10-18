@@ -1,223 +1,113 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8"/>
-<title>Heated Discussion</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<!--[if lt IE 9]>
-<script src="js/html5.js"></script>
-<![endif]-->
-<script src="js/jquery.js"></script>
-<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script>
+<!doctype html>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<div class="grid-container" style="text-align: center">
+  <div class="Header">
+  	<h1>Group08 - Heated Discussion</h1>
+  </div>
+  <div class="Body">
+    <div class="SearchArea">
+     <div style="float: left">
+       <text>Select Date</text>
+	   <select id="Date">
+		<option>all</option>
+		<option>2019 - 12</option>
+		<option>2020 - 01</option>
+		<option>2020 - 02</option>
+		<option>2020 - 03</option>
+	   </select>
+     </div>
+     <div style="float: right">
+      <text>Select Keyword</text>
+      <select id="dragdownmenu">
+    	<option>all</option>
+      	<option>Vaccinate</option>
+      	<option>Coronavirus</option>
+      	<option>COVID-19</option>
+      </select>
+    </div>
+    </div>
+    <div class="TableArea">
+      <h2>Rank of Most Heated Topic Around COVID</h2>
+      <table width="80%" border="1" align="center">
+	  <tbody>
+		<tr>
+		  <th scope="col">Keyword</th>
+		  <th scope="col">Number of Submissions</th>
+		  <th scope="col">Number of Comments</th>
+		</tr>
+		<tr>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		</tr><tr>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		  <td>&nbsp;</td>
+		</tr>
+	  </tbody>
+	  </table>
 
-	(function($){
-		$(window).load(function(){
-			
-			$("a[rel='load-content']").click(function(e){
-				e.preventDefault();
-				var url=$(this).attr("href");
-				$.get(url,function(data){
-					$(".content .mCSB_container").append(data); //load new content inside .mCSB_container
-					//scroll-to appended content 
-					$(".content").mCustomScrollbar("scrollTo","h2:last");
-				});
-			});
-			
-			$(".content").delegate("a[href='top']","click",function(e){
-				e.preventDefault();
-				$(".content").mCustomScrollbar("scrollTo",$(this).attr("href"));
-			});
-			
-		});
-	})(jQuery);
-</script>
-</head>
-<body>
-<!--header-->
-<header>
-    <h1 style="margin-left: 130px; margin-top: 100px;">Heated Discussion</h1>
-</header>
-<script src="./scripts/echarts.js"></script>
-<script src="./scripts/echarts-wordcloud.min.js"></script>
-<section class="rt_wrap content mCustomScrollbar">
-
- <div class="rt_content">
-     <!--弹出框效果-->
-     <script>
-     $(document).ready(function(){
-		 //弹出：确认按钮
-		 $(".trueBtn").click(function(){
-			 $(".pop_bg").fadeOut();
-			 });
-		 });
-     </script>
-     <section class="pop_bg">
-      <div class="pop_cont">
-       <!--title-->
-       <h3>Detail Page</h3>
-       <!--content-->
-       <div class="pop_cont_input">
-        <ul>
-        <div id="main" style="width: 800px;">
-            <div id="linearChart" style="width: 400px; height: 400px; float: left;"></div>
-            <div id="pieChart" style="width: 400px; height: 400px; float: left;"></div>
-        </div>
-        </ul>
-        <script type="text/javascript">
-            var linearChart = echarts.init(document.getElementById('linearChart'));
-            var linearOption = {
-                xAxis:{
-                    type: 'category',
-                    data: ['2019-12','2020-01','2020-02','2020-03','2020-04']
-                },
-                yAxis:{
-                    type: 'value'
-                },
-                series: [
-                    {
-                        data: [70, 60, 30, 50, 80],
-                        type: 'line',
-                        smooth: true
-                    }
-                ]
-            };
-            linearChart.setOption(linearOption);
-        </script>
-        <script type="text/javascript">
-            var pieChart = echarts.init(document.getElementById('pieChart'));
-            var pieOption = {
-                tooltip: {
-                    trigger: 'item'
-                },
-                legend: {
-                    top: '5%',
-                    left: 'center'
-                },
-                series: [
-                    {
-                        name: "pieChart",
-                        type: 'pie',
-                        radius: ['40%', '70%'],
-                        avoidLabelOverlap: false,
-                        itemStyle: {
-                            borderRadius: 10,
-                            borderColor: '#fff',
-                            borderWidth: 2
-                        },
-                        label: {
-                            show: false,
-                            position: 'center'
-                        },
-                        emphasis: {
-                            label: {
-                                show: true,
-                                fontSize: '40',
-                                fontWeight: 'bold'
-                            }
-                        },
-                        labelLine: {
-                            show: false
-                        },
-                        data: [
-                            {
-                                value: 1058,
-                                name: 'Positive'
-                            },
-                            {
-                                value: 600,
-                                name:  'Negative'
-                            },
-                            {
-                                value: 300,
-                                name: 'Neutral'
-                            }
-                        ]
-                    }
-                ]
-            };
-            pieChart.setOption(pieOption);
-        </script>
-        </ul>
-       </div>
-       <!--以pop_cont_text分界-->
-       <!--bottom:operate->button-->
-       <div class="btm_btn">
-        <input type="button" value="OK" class="trueBtn"/>
-       </div>
-      </div>
-     </section>
-     <!--结束：弹出框效果-->
-     <section>
-      <h2><strong style="color:grey;">ECharts Test</strong></h2>
-      <div id="wordCloud" style="width: 600px;height:400px;"></div>
-      
-      <script type="text/javascript">
-        var myChart = echarts.init(document.getElementById('wordCloud'));
-        
-        var echartsData = [
-            {
-                name: "Vaccination",
-                value: 600
-            },
-            {
-                name: "CoronaVirus",
-                value: 400
-            },
-            {
-                name: "COVID-19",
-                value: 350
-            },
-            {
-                name: "Pandemic",
-                value: 200
-            }
-        ]
-        // 指定图表的配置项和数据
-        var option = {
-            title: {
-                text: 'ECharts Word Cloud'
-            },
-            series: [
-                {
-                    type: 'wordCloud',
-                    shape: 'circle',
-                    gridSize: 8,
-                    sizeRange: [14, 60],
-                    rotationRange: [-90, 90],
-                    rotationStep: 45,
-                    textStyle: {
-                        fontFamily: 'sans-serif',
-                        fontWeight: 'bold',
-                        color: function() {
-                            return (
-                                "rgb(" + 
-                                Math.round(Math.random() * 255) + ", " + 
-                                Math.round(Math.random() * 255) + ", " + 
-                                Math.round(Math.random() * 255) + ")" 
-                            );
-                        }
-                    },
-                    left: "center",
-                    top: "center",
-                    right: null,
-                    bottom: null,
-                    drawOutOfBound: false,
-                    layoutAnimation: true,
-                    data: this.echartsData
-                }
-            ]
-        };
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-        myChart.on('click', function(params) {
-            $(".pop_bg").fadeIn();
-            console.log(params, params.data)
-        });
-    </script>
-    <input type="button" id="btn" />
-    </section>
- </div>
-</section>
-</body>
-</html>
+    </div>
+    <div class="PageSelectorArea">
+      <span>
+      	<a>1</a>
+      	<a>2</a>
+      	<a>3</a>
+      	<a>4</a>
+      </span>
+    </div>
+    <div class="WordCloudArea">
+      <h2>WordCloud</h2>
+    </div>
+    <div class="VisualizationArea">
+      <h2>Visualization</h2>
+    </div>
+  </div>
+  <div class="Footer"></div>
+  <div class="LeftSide"></div>
+  <div class="RightSide"></div>
+  <div class="LU"></div>
+  <div class="RU"></div>
+  <div class="LB"></div>
+  <div class="RB"></div>
+</div>
