@@ -1,5 +1,8 @@
 <!doctype html>
 <link rel="stylesheet" href="css/style.css" type="text/css" />
+<script src="scripts/echarts.js"></script>
+<script src="scripts/echarts-wordcloud.min.js"></script>
+
 <div class="grid-container" style="text-align: center">
   <div class="Header">
   	<h1>Group08 - Heated Discussion</h1>
@@ -98,9 +101,148 @@
     </div>
     <div class="WordCloudArea">
       <h2>WordCloud</h2>
+	  <div id="wordCloud" style="width: 600px; height:400px;"></div>
+	  <script type="text/javascript">
+		var myChart = echarts.init(document.getElementById('wordCloud'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'Most Heated Words'
+            },
+            series: [
+                {
+                    type: 'wordCloud',
+                    shape: 'circle',
+                    gridSize: 8,
+                    sizeRange: [14, 60],
+                    rotationRange: [-90, 90],
+                    rotationStep: 45,
+                    textStyle: {
+                        fontFamily: 'sans-serif',
+                        fontWeight: 'bold',
+                        color: function() {
+                            return (
+                                "rgb(" + 
+                                Math.round(Math.random() * 160) + ", " + 
+                                Math.round(Math.random() * 160) + ", " + 
+                                Math.round(Math.random() * 160) + ")" 
+                            );
+                        }
+                    },
+                    left: "center",
+                    top: "center",
+                    right: null,
+                    bottom: null,
+                    drawOutOfBound: false,
+                    layoutAnimation: true,
+                    data: [
+						{
+							name: "Vaccination",
+							value: 600
+						},
+						{
+							name: "CoronaVirus",
+							value: 400
+						},
+						{
+							name: "COVID-19",
+							value: 350
+						},
+						{
+							name: "Pandemic",
+							value: 200
+						}
+					]
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+	  </script>
     </div>
     <div class="VisualizationArea">
       <h2>Visualization</h2>
+	  <ul>
+        <div id="main" style="width: 100%">
+            <div id="linearChart" style="width: 50%; height: 500px; float: left;"></div>
+            <div id="pieChart" style="width: 50%; height: 500px; float: left;"></div>
+        </div>
+        </ul>
+        <script type="text/javascript">
+            var linearChart = echarts.init(document.getElementById('linearChart'));
+            var linearOption = {
+                xAxis:{
+                    type: 'category',
+                    data: ['2019-12','2020-01','2020-02','2020-03','2020-04']
+                },
+                yAxis:{
+                    type: 'value'
+                },
+                series: [
+                    {
+                        data: [70, 60, 30, 50, 80],
+                        type: 'line',
+                        smooth: true
+                    }
+                ]
+            };
+            linearChart.setOption(linearOption);
+        </script>
+        <script type="text/javascript">
+            var pieChart = echarts.init(document.getElementById('pieChart'));
+            var pieOption = {
+                tooltip: {
+                    trigger: 'item'
+                },
+                legend: {
+                    top: '5%',
+                    left: 'center'
+                },
+                series: [
+                    {
+                        name: "pieChart",
+                        type: 'pie',
+                        radius: ['40%', '70%'],
+                        avoidLabelOverlap: false,
+                        itemStyle: {
+                            borderRadius: 10,
+                            borderColor: '#fff',
+                            borderWidth: 2
+                        },
+                        label: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            label: {
+                                show: true,
+                                fontSize: '40',
+                                fontWeight: 'bold'
+                            }
+                        },
+                        labelLine: {
+                            show: false
+                        },
+                        data: [
+                            {
+                                value: 1058,
+                                name: 'Positive'
+                            },
+                            {
+                                value: 600,
+                                name:  'Negative'
+                            },
+                            {
+                                value: 300,
+                                name: 'Neutral'
+                            }
+                        ]
+                    }
+                ]
+            };
+            pieChart.setOption(pieOption);
+        </script>
     </div>
   </div>
   <div class="Footer"></div>

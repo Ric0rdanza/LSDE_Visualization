@@ -7,7 +7,7 @@
     "LU Header RU"
     "LeftSide Body RightSide"
     "LB Footer RB";
-  height: 1500px;
+  height: 2500px;
 }
 
 .Header { grid-area: Header; }
@@ -15,7 +15,7 @@
 .Body {
   display: grid;
   grid-template-columns: 10% 80% 10%;
-  grid-template-rows: 5% 40% 5% 20% 30%;
+  grid-template-rows: 5% 30% 5% 30% 30%;
   gap: 0px 0px;
   grid-template-areas:
     ". SearchArea ."
